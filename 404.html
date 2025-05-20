@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content="VuePress 2.0.0-rc.20" />
+    <style>
+      :root {
+        --vp-c-bg: #fff;
+      }
+
+      [data-theme='dark'] {
+        --vp-c-bg: #1b1b1f;
+      }
+
+      html,
+      body {
+        background-color: var(--vp-c-bg);
+      }
+    </style>
+    <script>
+      const useChoice = localStorage.getItem('vuepress-color-scheme')
+      const systemStatus =
+        'matchMedia' in window
+          ? window.matchMedia('(prefers-color-scheme: dark)').matches
+          : false
+
+      if (useChoice === 'light') {
+        document.documentElement.dataset.theme = 'light'
+      } else if (useChoice === 'dark' || systemStatus) {
+        document.documentElement.dataset.theme = 'dark'
+      }
+    </script>
+    <title>Live Change Framework</title><meta name="description" content="Live Change Framework documentation">
+    <link rel="preload" href="/assets/style-BwMlQu3v.css" as="style"><link rel="stylesheet" href="/assets/style-BwMlQu3v.css">
+    <link rel="modulepreload" href="/assets/app-B-aIAih-.js"><link rel="modulepreload" href="/assets/404.html-CxCLFP8U.js">
+    <link rel="prefetch" href="/assets/index.html-C19vhfes.js" as="script"><link rel="prefetch" href="/assets/index.html-BYVVjRZh.js" as="script"><link rel="prefetch" href="/assets/index.html-DeEiQEFu.js" as="script"><link rel="prefetch" href="/assets/globals.html-BomWDtis.js" as="script"><link rel="prefetch" href="/assets/ActionContext.html-BIBrm7f4.js" as="script"><link rel="prefetch" href="/assets/ActionDefinitionSpecification.html-C57B6W7Y.js" as="script"><link rel="prefetch" href="/assets/ClientContext.html-BZSNL-y0.js" as="script"><link rel="prefetch" href="/assets/ContextBase.html-BYJ5PCF2.js" as="script"><link rel="prefetch" href="/assets/EventDefinitionSpecification.html-BzC_NSnk.js" as="script"><link rel="prefetch" href="/assets/IndexDefinitionSpecification.html-CFWxBQ3W.js" as="script"><link rel="prefetch" href="/assets/ModelDefinitionSpecification.html-CmForHJw.js" as="script"><link rel="prefetch" href="/assets/ModelIndexDefinitionSpecification.html-DEVlcACR.js" as="script"><link rel="prefetch" href="/assets/ModelPropertyDefinitionSpecification.html-BNjNcVHW.js" as="script"><link rel="prefetch" href="/assets/PropertyDefinitionSpecification.html-Dzhp7nOB.js" as="script"><link rel="prefetch" href="/assets/ServiceDefinitionSpecification.html-D8Xp1HcW.js" as="script"><link rel="prefetch" href="/assets/TriggerContext.html-DvC2zIAq.js" as="script"><link rel="prefetch" href="/assets/TriggerDefinitionSpecification.html-CMbTr_tI.js" as="script"><link rel="prefetch" href="/assets/TriggerServiceSettings.html-CYoRsLZD.js" as="script"><link rel="prefetch" href="/assets/TriggerSettings.html-BDQw2R4x.js" as="script"><link rel="prefetch" href="/assets/ValidationSpecificationObject.html-MlGGGdR8.js" as="script"><link rel="prefetch" href="/assets/ViewContext.html-DqsRq897.js" as="script"><link rel="prefetch" href="/assets/ViewDefinitionSpecificationBase.html-BCo7BsKc.js" as="script"><link rel="prefetch" href="/assets/ViewDefinitionSpecificationDaoPath.html-CMUGeP2E.js" as="script"><link rel="prefetch" href="/assets/ViewDefinitionSpecificationFetch.html-Cfp-wG-4.js" as="script"><link rel="prefetch" href="/assets/ViewDefinitionSpecificationObservable.html-BE0h7xQ3.js" as="script"><link rel="prefetch" href="/assets/AccessFunction.html-BIaox3NE.js" as="script"><link rel="prefetch" href="/assets/AccessSpecification.html-eqiva0jm.js" as="script"><link rel="prefetch" href="/assets/ActionParameters.html-BICgpSLE.js" as="script"><link rel="prefetch" href="/assets/EventParameters.html-0PMwTx6G.js" as="script"><link rel="prefetch" href="/assets/TriggerParameters.html-B6FomcrK.js" as="script"><link rel="prefetch" href="/assets/ValidationSpecification.html-DAtT0mgT.js" as="script"><link rel="prefetch" href="/assets/ViewDefinitionSpecification.html-UPOkIxae.js" as="script"><link rel="prefetch" href="/assets/unknown.html-BNYDKYnu.js" as="script"><link rel="prefetch" href="/assets/ActionDefinition.html-Dwm4mmVg.js" as="script"><link rel="prefetch" href="/assets/EventDefinition.html-B_rhJFHY.js" as="script"><link rel="prefetch" href="/assets/ForeignIndexDefinition.html-Ch8PpfX5.js" as="script"><link rel="prefetch" href="/assets/ForeignModelDefinition.html-BmyVUZ0W.js" as="script"><link rel="prefetch" href="/assets/IndexDefinition.html-DByKqFfd.js" as="script"><link rel="prefetch" href="/assets/ModelDefinition.html-opuCS9So.js" as="script"><link rel="prefetch" href="/assets/PropertyDefinition.html-CJiOdBLc.js" as="script"><link rel="prefetch" href="/assets/ServiceDefinition.html-uCfsBcxN.js" as="script"><link rel="prefetch" href="/assets/TriggerDefinition.html-C9SUI59M.js" as="script"><link rel="prefetch" href="/assets/ViewDefinition.html-N97i1orx.js" as="script"><link rel="prefetch" href="/assets/plugin.html-CUSpoqK-.js" as="script"><link rel="prefetch" href="/assets/BoundToAnyConfig.html-BvMAHMoE.js" as="script"><link rel="prefetch" href="/assets/BoundToConfig.html-DkE1fjEN.js" as="script"><link rel="prefetch" href="/assets/ItemOfAnyConfig.html-CHElE5wV.js" as="script"><link rel="prefetch" href="/assets/ItemOfConfig.html-DolrcJyo.js" as="script"><link rel="prefetch" href="/assets/MotelWithRelations.html-BHFyTEcs.js" as="script"><link rel="prefetch" href="/assets/PropertyOfAnyConfig.html-DUtX17C-.js" as="script"><link rel="prefetch" href="/assets/PropertyOfConfig.html-Bye9nVNx.js" as="script"><link rel="prefetch" href="/assets/RelatedToAnyConfig.html-BzaqZrqM.js" as="script"><link rel="prefetch" href="/assets/RelatedToConfig.html-BezE4P6p.js" as="script"><link rel="prefetch" href="/assets/SaveAuthorConfig.html--gI8V4l1.js" as="script"><link rel="prefetch" href="/assets/processors.html-CBC_qgh2.js" as="script">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="vp-theme-container" vp-container data-v-ec9917b8><main class="page" data-v-ec9917b8><div vp-content data-v-ec9917b8><h1 data-v-ec9917b8>404</h1><blockquote data-v-ec9917b8>Looks like we&#39;ve got some broken links.</blockquote><a class="route-link" href="/" data-v-ec9917b8>Take me home</a></div></main></div><!--[--><!----><!--]--><!--]--></div>
+    <script type="module" src="/assets/app-B-aIAih-.js" defer></script>
+  </body>
+</html>
