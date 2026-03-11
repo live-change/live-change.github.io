@@ -1,8 +1,8 @@
-[**@live-change/relations-plugin v0.9.194**](README.md)
+[**@live-change/relations-plugin v0.9.198**](README.md)
 
 ***
 
-# @live-change/relations-plugin v0.9.194
+# @live-change/relations-plugin v0.9.198
 
 ## Interfaces
 

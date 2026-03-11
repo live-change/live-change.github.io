@@ -1,8 +1,8 @@
-**@live-change/framework v0.9.194**
+**@live-change/framework v0.9.198**
 
 ***
 
-# @live-change/framework v0.9.194
+# @live-change/framework v0.9.198
 
 ## Classes
 
