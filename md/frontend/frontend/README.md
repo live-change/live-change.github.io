@@ -32,4 +32,5 @@ This manual documents the **frontend** part of the Live Change Framework:
 9. [API reference](/frontend/09-api-vue3-components.md) — concise API reference for the main modules
 10. [Path and live](/frontend/10-path-and-live.md) — reactive path builder and live subscriptions
 11. [Locale and time](/frontend/11-locale-and-time.md) — language, timezone, time utilities, emails
+12. [Describe command](/frontend/12-describe-command.md) — discovering views, actions, and models for frontend development
 
