@@ -134,6 +134,58 @@ definition.view({
 })
 ```
 
+## Filtering inside an index prefix (`App.utils.prefixRange`)
+
+`sortedIndexRangePath(indexName, keyPrefix, range)` is preferred when your filter can be expressed as index prefix parts.
+
+When you must narrow a range by a serialized key prefix (for example optional month on an index that starts with another field), use:
+
+- `App.extractRange(props)` to get range cursor parameters
+- `App.utils.prefixRange(range, prefix, prefix + ':')` to apply lower/upper key bounds
+
+```javascript
+definition.view({
+  name: 'bankTransactionsByBankAccountAndDate',
+  properties: {
+    bankAccount: { type: String },
+    month: { type: String },
+    ...App.rangeProperties
+  },
+  async daoPath({ bankAccount, month, ...props }) {
+    const range = App.extractRange(props)
+    if(month) {
+      const prefix = [bankAccount, month].map(v => JSON.stringify(v)).join(':')
+      return BankTransaction.rangePath(App.utils.prefixRange(range, prefix, prefix + ':'))
+    }
+    return BankTransaction.sortedIndexRangePath('byBankAccountAndDate', [bankAccount], range)
+  }
+})
+```
+
+Important:
+
+- Do not pass raw field values (like `'2026-02-01'`) directly to `gt/lt` unless they match the actual serialized key layout.
+- Keep `range` for pagination cursor (`gt/lt`, `limit`, `reverse`), and pass domain filters as separate properties.
+- If this filter is frequent, define a dedicated index with a better prefix structure (for example `[bankAccount, month, date]`).
+
+Frontend note:
+
+- if the frontend range source changes reactively (for example month/status filters), prefer `ReactiveRangeViewer` and pass a dedicated `sourceKey` to trigger safe bucket rebuilds.
+
+Do not break range cursor flow:
+
+- for range UI (`RangeViewer`, `rangeBuckets`), do not replace pagination cursor (`gt/gte/lt/lte`) with ad-hoc domain filters,
+- do not implement frontend-driven custom cursor overrides for month/year/status filtering,
+- prefer `sortedIndexRangePath` for index-backed lists because cursor boundaries must follow index key order.
+
+If you need tighter domain constraints:
+
+1. preferred: create a dedicated index with prefix parts matching the filter (for example `[bankAccount, month, date]`),
+2. fallback: use `App.utils.prefixRange` in backend view,
+3. last resort: bounded string min/max hacks only when backend changes are impossible.
+
+See index design guidance in [Indexes and foreign models](11-indexes-and-foreign-models.md). For frontend usage rules, see [Frontend – Logic and data layer](../frontend/04-logic-and-data-layer.md).
+
 ## View with get and observable (external data)
 
 When data is not stored in the framework DB (e.g. blockchain balance), use **get** and **observable** instead of daoPath:
