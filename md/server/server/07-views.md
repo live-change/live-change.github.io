@@ -243,6 +243,30 @@ definition.view({
 })
 ```
 
+## Server-side reads: `app.viewGet` and `app.serviceViewGet`
+
+From **actions**, **triggers**, or other server code you sometimes need a one-off read through the **same view layer** the client uses (including access control on the view). The app exposes:
+
+- **`await app.viewGet(viewName, properties)`** — resolves a view defined on the **current** service (`viewName` matches `definition.view({ name: viewName, ... })`).
+- **`await app.serviceViewGet(serviceName, viewName, properties)`** — resolves a view on **another** service.
+
+Typical uses: enrich trigger logic with related data (e.g. emails for notifications), read another service’s list by role, etc.
+
+Examples in this repo:
+
+```javascript
+// family-tree/server/tree-order-service/order.js (trigger)
+const emails = await app.viewGet('userEmails', { user: order.user })
+const operators = await app.serviceViewGet('user', 'usersByRole', { role: config.merchantRole })
+```
+
+```javascript
+// live-change-stack/services/access-control-service/invite.js
+const contactData = await app.viewGet('get' + contactTypeUName, { [contactType]: contact })
+```
+
+Do **not** add a `definition.action` whose only purpose is to return read-only or preview data — expose that as a **view** and use `viewGet` / `serviceViewGet` from server code, or consume it from the client via `live` / `useFetch` (see [Frontend – Logic and data layer](../frontend/04-logic-and-data-layer.md)).
+
 ## Helpers
 
 - **App.rangeProperties** — Standard range params (e.g. gt, gte, lt, lte, limit, reverse).

@@ -83,6 +83,13 @@ const api = useApi()
 await api.command(['blog', 'deleteArticle'], { article: props.article })
 ```
 
+### Reads vs writes (CQRS-like)
+
+- **Reads** — any data the UI needs, including computed values, previews, or “what would the next invoice number be”, must come from **views**: use `live(path.to.view(...))` or `useFetch(path.to.view(...))`. Do **not** call `api.command` or `useActions()` only to load or preview data.
+- **Writes** — use `api.command` / `useActions()` when the action **changes persisted state** (create/update/delete via the action → events pipeline).
+
+Anti-pattern: an action that only returns a string or object for display without mutating the database — add a **view** on the server and subscribe or fetch it on the client instead.
+
 ## Logic components from vue3-components
 
 `@live-change/vue3-components` provides components and helpers:
