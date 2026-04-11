@@ -85,6 +85,8 @@ The most common pattern is:
 - build `id` as a serialized composite key plus `_' + sourceId`
 - prefer `table.map(mapper).to(output)` for cleaner index pipelines
 
+> **IMPORTANT:** Index functions are **serialized via `toString()`** and executed on a remote server. All mappers, helpers, and variables **must be defined inside the function body**. References to module-scope functions, imports, or outer closures will silently be `undefined` at runtime. This applies to both model-level function indexes and standalone `definition.index(...)`.
+
 ```javascript
 indexes: {
   byBankAccountAndMonthAndDate: {
@@ -119,6 +121,8 @@ Use standalone indexes when:
 - index rows are derived from multiple tables or indexes,
 - no single model is the natural owner of the index,
 - you need a union/projection layer for cross-table queries.
+
+> **IMPORTANT:** Standalone index functions follow the same serialization constraint as model-level function indexes — all helpers and mappers **must be defined inside the function body**, not in module scope.
 
 Example pattern:
 
